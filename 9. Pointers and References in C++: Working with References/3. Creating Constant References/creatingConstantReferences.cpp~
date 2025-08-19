@@ -1,0 +1,54 @@
+#include<iostream>
+#include<string>
+#include<vector>
+
+using std::cout;
+using std::endl;
+using std::string;
+using std::vector;
+
+//Example is to empahsize the importance of using references in for loops. If we were to pass in the vector without the &, we would esentially be creating a copy of everyhting inside of the vector, making changes to the data, and once the program reaches the closing brace of the for loop, it would delete all the data it just copied into the for loop. For our example this doesnt seem like a big deal because it is onoly 4 elements, but in the real world say we are passing 1 million values, then our program's performance would really struggle. Using the reference is a good way to increase performance as it will directly use the data from the vector. No copying or deleting involved. Note that if we are using a referenfce, that all the data we modify in the for loop will be also affect the original vector, which is where the use case of const will come into play because this will ensure that if we dont intend to update our original data, we wont. In many cases it is considered bad practice to have a for loop that modifies the contents of the container it iterates over.
+
+// int main(){
+//   vector<string> cities {"New York", "Seattle", "Boston", "Austin"};
+
+//   for (auto& city : cities){      //using a range based for loop that is taking the REFERENCE of a vector
+//     city[0] = std::tolower(city[0]);     //manipulate character [0] of the city we are working with
+//     city[1] = std::toupper(city[1]);     //manipulate character [1] of the city we are working with
+
+//     cout << city << endl;
+//   }
+
+  
+//   return 0;
+// }
+
+//Example to show us that we are not allowed to modify const references
+// int main(){
+
+//   string name = "Brian";
+//   const string& nameRef = name;
+
+//   cout<< "Original Name: " << name << endl;
+
+//   nameRef = "Attempting to modify name through nameRef";     //this causes an error when copiling as we are attempting to modify a const reference.
+  
+//   cout << "Updated Name: " << nameRef << endl;
+  
+//   return 0;
+// }
+
+//Example to show us that we are not allowed to modify const references, but we are able to get around this by modifyig the original name, which will modify the const reference
+int main(){
+
+  string name = "Brian";
+  const string& nameRef = name;
+
+  cout<< "Original Name: " << name << endl;
+
+  name = "Modifying const nameRef through name";     //this causes an error when copiling as we are attempting to modify a const reference.
+  
+  cout << "Updated Name: " << nameRef << endl;
+  
+  return 0;
+}
