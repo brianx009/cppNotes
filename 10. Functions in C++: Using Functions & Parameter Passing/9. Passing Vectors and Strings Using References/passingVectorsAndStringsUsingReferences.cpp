@@ -55,9 +55,17 @@ void formatAndPrint(string& firstName, string& lastName, string& city);
 
 int main(){
 
+  string firstName = "Brian";
+  string lastName = "Last Name";
+  string city = "City";
+
+  formatAndPrint(firstName, lastName, city);
+
   return 0;
 }
 
 void formatAndPrint(string& firstName, string& lastName, string& city){
-  string formattedString = "Formatted String: " 
+  string formattedString = "Formatted String: " + firstName + ", " + lastName + ", " + city;
+
+  std::cout << formattedString << std::endl;
 }
