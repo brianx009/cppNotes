@@ -5,7 +5,11 @@ using std::cout;
 using std::endl;
 using std::string;
 
-//Example 1: Shows that we have local variables created inside of main, and then inside the function someFunction, since we are passing by value, we are creating another instance of the values local to someFunction. So when we cout inside of int main, instead of getting the updated values, we get the old local unupdated values inside of int main. If running with GDB, you can step through the program and step into the function call and see that the function is updating the values inside of the function, but does not use these updated values.
+//Example 1: Shows that we have local variables created inside of main, and then inside the function someFunction, 
+//since we are passing by value, we are creating another instance of the values local to someFunction. So when we 
+//cout inside of int main, instead of getting the updated values, we get the old local unupdated values inside of 
+//int main. If running with GDB, you can step through the program and step into the function call and see that the 
+//function is updating the values inside of the function, but does not use these updated values.
 //Running GDB:
 //1) Compile program: c++ -g 'program_name'
 //2) Run gdb on executable: lldb ./'executable_name'
@@ -49,14 +53,14 @@ void makeCountryUpperCase(string countryName);
 
 int main(){
 
-  string countryName = "India";
+  string countryName = "India";     //object local to int main
   updateCountry(countryName);
 
-  cout << "Country Name after updateCountryName call: " << countryName << endl;
+  cout << "Country Name after updateCountryName call: " << countryName << endl;     // prints out "India"
 
   makeCountryUpperCase(countryName);
 
-  cout << "Country Name after makeCountryUpperCase call: " << countryName << endl;
+  cout << "Country Name after makeCountryUpperCase call: " << countryName << endl;  // prints out "India"
   
   return 0;
 }

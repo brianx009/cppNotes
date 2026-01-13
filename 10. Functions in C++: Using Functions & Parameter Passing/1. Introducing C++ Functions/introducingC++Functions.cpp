@@ -17,7 +17,7 @@ int main(){
   std::cout << add(1,1) << std::endl;
 
   int arr[10];     
-  int arrSize = std::size(arr);     // free function that is provided by the std c++ namespace
+  int arrSize = std::size(arr);     // free function that is provided by the std c++ namespace -- note how intellisense marks this as an error in our code, but will compile
 
   std::string hello("Hello, World!");    // creating a object of type string -- string is a standard c++ class  
   int strLength = hello.length();    // using .length() member function that is specific to the string class. - not a free function.
